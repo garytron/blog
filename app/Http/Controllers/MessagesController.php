@@ -14,6 +14,12 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['create', 'store'] ]);
+    }
+
     public function index()
     {
         //Query Builder
@@ -64,7 +70,7 @@ class MessagesController extends Controller
         //ELOQUENT. Form 2.
         Message::create($request->all());
 
-        return redirect()->route('messages.index');
+        return redirect()->route('messages.create')->with('info', 'Hemos recibido tu mensaje');
     }
 
     /**

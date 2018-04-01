@@ -22,11 +22,7 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
 
-Route::get('contactame', ['as' => 'contactos', 'uses' => 'PagesController@contact']);
-
 Route::get('/saludos/{nombre?}', [ 'as' => 'saludos', 'uses' => 'PagesController@saludo'])->where('nombre','[A-Za-z]+');
-
-Route::post('contacto', 'PagesController@mensajes');
 
 // Definiendo cada uno.
 
@@ -49,3 +45,22 @@ Route::delete('messages/{id}', ['as' => 'messages.destroy', 'uses' => 'MessagesC
 // Agrupados
 
 Route::resource('messages', 'MessagesController');
+Route::resource('users', 'UsersController');
+
+Route::get('login','Auth\LoginController@showLoginForm');
+
+Route::post('login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);
+
+Route::get('logout','Auth\LoginController@logout');
+
+/*Route::get('test', function(){
+	$user = new App\User;
+	$user->name= 'Estudiante';
+	$user->email= 'Estudiante@gmail.com';
+	$user->password= bcrypt('123');
+	$user->role = 'Estudiante';
+	$user->save();
+
+	return $user;
+
+});*/

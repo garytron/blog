@@ -14,12 +14,7 @@ class PagesController extends Controller
 	{
 		return view('home');
 	}
-
-	public function contact()
-	{
-		return view('contactos');
-	}
-
+	
 	public function saludo($nombre = 'Invitado')
 	{
 		$consolas = [
