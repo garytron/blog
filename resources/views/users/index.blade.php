@@ -20,7 +20,7 @@
 						<a href="{{ route('messages.show', $ms->id) }}">
 					{{ $ms->name }} </a></td>
 					<td>{{ $ms->email }} </td>
-					<td>{{ $ms->role }} </td>
+					<td>{{ $ms->role->display_name }} </td>
 					<td><a href="{{ route('messages.edit', $ms->id) }}"> Editar </a>
 						<form style="display:inline" method="POST" action="{{ route('messages.destroy', $ms->id)}}">
 							@method('delete')

@@ -52,13 +52,17 @@ Route::get('login','Auth\LoginController@showLoginForm');
 Route::post('login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);
 
 Route::get('logout','Auth\LoginController@logout');
+Route::get('roles',function (){
+	return \App\Role::with('user')->get();
+});
+
 
 /*Route::get('test', function(){
 	$user = new App\User;
-	$user->name= 'Estudiante';
-	$user->email= 'Estudiante@gmail.com';
+	$user->name= 'Moderador';
+	$user->email= 'Moderador@gmail.com';
 	$user->password= bcrypt('123');
-	$user->role = 'Estudiante';
+	$user->role_id = 2;
 	$user->save();
 
 	return $user;
